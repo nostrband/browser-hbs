@@ -1,0 +1,22 @@
+{
+  "name": "browser-hbs",
+  "version": "1.0.0",
+  "description": "Port of express-hbs for browser",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "artur@nostr.band",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "path-browserify": "^1.0.1"
+  },
+  "devDependencies": {
+    "path": "^0.12.7",
+    "vite": "^5.2.10"
+  }
+}
