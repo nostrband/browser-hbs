@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Port of express-hbs for browser",
   "type": "module",
+  "module": "./dist/browser-hbs.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

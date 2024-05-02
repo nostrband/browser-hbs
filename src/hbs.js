@@ -23,7 +23,7 @@ var getCWD = function () {
 /**
  * Constructor
  */
-export default BrowserHbs = function () {
+export default function BrowserHbs () {
   this.handlebars = handlebars.create();
   this.SafeString = this.handlebars.SafeString;
   this.Utils = this.handlebars.Utils;
