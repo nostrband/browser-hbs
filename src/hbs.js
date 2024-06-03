@@ -2,9 +2,9 @@
 
 "use strict";
 
-window.process = {
-  cwd: () => document.location.pathname,
-};
+// used for hbs compiler
+if (!globalThis.process) globalThis.process = {}
+globalThis.process.cwd = () => "/";
 
 import path from "path-browserify";
 import handlebars from "handlebars";
@@ -16,20 +16,17 @@ import _ from "lodash";
  */
 var layoutPattern = /{{!<\s+([A-Za-z0-9\._\-\/]+)\s*}}/;
 
-var getCWD = function () {
-  return new URL(document.location).pathname;
-};
-
 /**
  * Constructor
  */
-export default function BrowserHbs () {
+function BrowserHbs() {
+  this.attr = 2;
   this.handlebars = handlebars.create();
   this.SafeString = this.handlebars.SafeString;
   this.Utils = this.handlebars.Utils;
   this.beautify = null;
   this.beautifyrc = null;
-  this.cwd = getCWD();
+  this.cwd = "/";
   this.fetcher = (file, _, cb) => {
     console.log("fetch", file);
     fetch(file)
@@ -221,7 +218,7 @@ BrowserHbs.prototype.cachePartials = async function (cb) {
  *   }
  * }
  */
-BrowserHbs.prototype.init = function (options) {
+BrowserHbs.prototype.init = function(options) {
   var self = this;
 
   // Set defaults
@@ -465,7 +462,7 @@ BrowserHbs.prototype.create = function () {
  *         layout: 'layout/veggie'
  *       }
  */
-BrowserHbs.prototype.render = function render(filename, source, options, cb) {
+BrowserHbs.prototype.render = function(filename, source, options, cb) {
   // support running as a gulp/grunt filter outside of express
   if (arguments.length === 3) {
     cb = options;
@@ -719,3 +716,4 @@ BrowserHbs.prototype.render = function render(filename, source, options, cb) {
   });
 };
 
+export default BrowserHbs;
